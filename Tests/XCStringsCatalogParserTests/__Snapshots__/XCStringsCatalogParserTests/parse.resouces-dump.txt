@@ -1,0 +1,65 @@
+[
+  [0]: XCStringResource(
+    key: "Key",
+    comment: "This is a comment",
+    arguments: [],
+    sourceLocalization: "Default Value"
+  ),
+  [1]: XCStringResource(
+    key: "myDeviceVariant",
+    comment: nil,
+    arguments: [],
+    sourceLocalization: "Multiplatform Original"
+  ),
+  [2]: XCStringResource(
+    key: "myPlural",
+    comment: nil,
+    arguments: [
+      [0]: XCStringResource.Argument(
+        label: nil,
+        name: "arg1",
+        placeholderType: .int
+      )
+    ],
+    sourceLocalization: "I have %lld plurals"
+  ),
+  [3]: XCStringResource(
+    key: "mySubstitute",
+    comment: nil,
+    arguments: [
+      [0]: XCStringResource.Argument(
+        label: nil,
+        name: "arg1",
+        placeholderType: .int
+      ),
+      [1]: XCStringResource.Argument(
+        label: "count",
+        name: "arg2",
+        placeholderType: .int
+      )
+    ],
+    sourceLocalization: "%lld: People liked %lld posts"
+  ),
+  [4]: XCStringResource(
+    key: "namedKey",
+    comment: nil,
+    arguments: [
+      [0]: XCStringResource.Argument(
+        label: "named",
+        name: "arg1",
+        placeholderType: .object
+      ),
+      [1]: XCStringResource.Argument(
+        label: "second",
+        name: "arg2",
+        placeholderType: .int
+      ),
+      [2]: XCStringResource.Argument(
+        label: nil,
+        name: "arg3",
+        placeholderType: .double
+      )
+    ],
+    sourceLocalization: "Some %1$(named)@ key, with multiple args %2$(second)lld the last one not named %3$lf %#@test@ "
+  )
+]

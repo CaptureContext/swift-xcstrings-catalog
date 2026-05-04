@@ -1,0 +1,14 @@
+[
+  [0]: ExtractionIssue(
+    key: "Empty.Comment",
+    reason: .missingSourceLocalization(
+      XCStringLanguage(rawValue: "en")
+    )
+  ),
+  [1]: ExtractionIssue(
+    key: "Empty",
+    reason: .missingSourceLocalization(
+      XCStringLanguage(rawValue: "en")
+    )
+  )
+]

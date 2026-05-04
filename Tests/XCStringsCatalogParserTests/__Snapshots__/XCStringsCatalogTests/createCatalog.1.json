@@ -1,0 +1,50 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "ExampleKey" : {
+      "comment" : "A comment",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Example value"
+          },
+          "substitutions" : {
+            "substitution" : {
+              "argNum" : 0,
+              "formatSpecifier" : "%lld",
+              "variations" : {
+                "device" : {
+                  "ipad" : {
+                    "stringUnit" : {
+                      "state" : "translated",
+                      "value" : "Example value"
+                    }
+                  }
+                },
+                "plural" : {
+
+                }
+              }
+            }
+          },
+          "variations" : {
+            "device" : {
+              "ipad" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Example value"
+                }
+              }
+            },
+            "plural" : {
+
+            }
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}
