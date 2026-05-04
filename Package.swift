@@ -6,11 +6,11 @@ import PackageDescription
 let package = Package(
 	name: "swift-xcstrings-catalog",
 	platforms: [
-		.iOS(.v13),
-		.macOS(.v10_15),
-		.tvOS(.v13),
-		.watchOS(.v6),
-		.macCatalyst(.v13),
+		.iOS(.v16),
+		.macOS(.v13),
+		.tvOS(.v16),
+		.watchOS(.v9),
+		.macCatalyst(.v16),
 		.visionOS(.v1),
 	],
 	products: [
