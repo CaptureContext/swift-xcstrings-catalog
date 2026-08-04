@@ -1,0 +1,173 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 6.4 (swiftlang-6.4.0.25.4 clang-2100.3.25.1)
+// swift-module-flags: -target arm64-apple-macos13.0 -enable-objc-interop -language-mode 6 -O -enable-experimental-feature DebugDescriptionMacro -module-name XCStringsCatalogCore -package-name swift_xcstrings_catalog
+// swift-module-flags-ignorable:  -formal-cxx-interoperability-mode=off -interface-compiler-version 6.4
+import Foundation
+import Swift
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+public struct XCStringEntry : Swift::Codable, Swift::Hashable, Swift::Sendable {
+  public typealias Localizations = [XCStringsCatalogCore::XCStringLanguage : XCStringsCatalogCore::XCStringLocalization]
+  @_hasInitialValue public var comment: Swift::String?
+  @_hasInitialValue public var extractionState: XCStringsCatalogCore::XCStringExtractionState?
+  @_hasInitialValue public var localizations: XCStringsCatalogCore::XCStringEntry.XCStringsCatalogCore::Localizations?
+  public init(comment: Swift::String? = nil, extractionState: XCStringsCatalogCore::XCStringExtractionState? = nil, localizations: XCStringsCatalogCore::XCStringEntry.XCStringsCatalogCore::Localizations? = nil)
+  @_implements(Swift::Equatable, ==(_:_:)) public static func __derived_struct_equals(_ a: XCStringsCatalogCore::XCStringEntry, _ b: XCStringsCatalogCore::XCStringEntry) -> Swift::Bool
+  public func encode(to encoder: any Swift::Encoder) throws
+  public func hash(into hasher: inout Swift::Hasher)
+  public var hashValue: Swift::Int {
+    get
+  }
+  public init(from decoder: any Swift::Decoder) throws
+}
+public struct XCStringExtractionState : Swift::RawRepresentable, Swift::CodingKeyRepresentable, Swift::Codable, Swift::Hashable, Swift::Sendable {
+  public let rawValue: Swift::String
+  public init(rawValue: Swift::String)
+  @_hasInitialValue public static let manual: XCStringsCatalogCore::XCStringExtractionState
+  @_hasInitialValue public static let automatic: XCStringsCatalogCore::XCStringExtractionState
+  @_hasInitialValue public static let migrated: XCStringsCatalogCore::XCStringExtractionState
+  public typealias RawValue = Swift::String
+}
+extension XCStringsCatalogCore::XCStringExtractionState : Swift::ExpressibleByStringLiteral {
+  public init(stringLiteral value: Swift::StringLiteralType)
+  public typealias ExtendedGraphemeClusterLiteralType = Swift::StringLiteralType
+  public typealias StringLiteralType = Swift::StringLiteralType
+  public typealias UnicodeScalarLiteralType = Swift::StringLiteralType
+}
+public struct XCStringLanguage : Swift::RawRepresentable, Swift::CodingKeyRepresentable, Swift::Codable, Swift::Hashable, Swift::Sendable {
+  public let rawValue: Swift::String
+  public init(rawValue: Swift::String)
+  @_hasInitialValue public static let english: XCStringsCatalogCore::XCStringLanguage
+  public typealias RawValue = Swift::String
+}
+extension XCStringsCatalogCore::XCStringLanguage : Swift::ExpressibleByStringLiteral {
+  public init(stringLiteral value: Swift::StringLiteralType)
+  public typealias ExtendedGraphemeClusterLiteralType = Swift::StringLiteralType
+  public typealias StringLiteralType = Swift::StringLiteralType
+  public typealias UnicodeScalarLiteralType = Swift::StringLiteralType
+}
+public struct XCStringLocalization : Swift::Codable, Swift::Hashable, Swift::Sendable {
+  @_hasInitialValue public var stringUnit: XCStringsCatalogCore::XCStringUnit?
+  @_hasInitialValue public var substitutions: [Swift::String : XCStringsCatalogCore::XCStringSubstitution]?
+  @_hasInitialValue public var variations: XCStringsCatalogCore::XCStringVariations?
+  public init(stringUnit: XCStringsCatalogCore::XCStringUnit? = nil, substitutions: [Swift::String : XCStringsCatalogCore::XCStringSubstitution]? = nil, variations: XCStringsCatalogCore::XCStringVariations? = nil)
+  @_implements(Swift::Equatable, ==(_:_:)) public static func __derived_struct_equals(_ a: XCStringsCatalogCore::XCStringLocalization, _ b: XCStringsCatalogCore::XCStringLocalization) -> Swift::Bool
+  public func encode(to encoder: any Swift::Encoder) throws
+  public func hash(into hasher: inout Swift::Hasher)
+  public var hashValue: Swift::Int {
+    get
+  }
+  public init(from decoder: any Swift::Decoder) throws
+}
+public struct XCStringSubstitution : Swift::Codable, Swift::Hashable, Swift::Sendable {
+  public let argNum: Swift::Int
+  public let formatSpecifier: Swift::String
+  public let variations: XCStringsCatalogCore::XCStringVariations?
+  public init(argNum: Swift::Int, formatSpecifier: Swift::String, variations: XCStringsCatalogCore::XCStringVariations?)
+  @_implements(Swift::Equatable, ==(_:_:)) public static func __derived_struct_equals(_ a: XCStringsCatalogCore::XCStringSubstitution, _ b: XCStringsCatalogCore::XCStringSubstitution) -> Swift::Bool
+  public func encode(to encoder: any Swift::Encoder) throws
+  public func hash(into hasher: inout Swift::Hasher)
+  public var hashValue: Swift::Int {
+    get
+  }
+  public init(from decoder: any Swift::Decoder) throws
+}
+public struct XCStringUnit : Swift::Codable, Swift::Hashable, Swift::Sendable {
+  public var state: XCStringsCatalogCore::XCStringUnitState
+  public var value: Swift::String
+  public init(state: XCStringsCatalogCore::XCStringUnitState, value: Swift::String)
+  @_implements(Swift::Equatable, ==(_:_:)) public static func __derived_struct_equals(_ a: XCStringsCatalogCore::XCStringUnit, _ b: XCStringsCatalogCore::XCStringUnit) -> Swift::Bool
+  public func encode(to encoder: any Swift::Encoder) throws
+  public func hash(into hasher: inout Swift::Hasher)
+  public var hashValue: Swift::Int {
+    get
+  }
+  public init(from decoder: any Swift::Decoder) throws
+}
+public struct XCStringUnitState : Swift::RawRepresentable, Swift::Codable, Swift::Hashable, Swift::Sendable {
+  public let rawValue: Swift::String
+  public init(rawValue: Swift::String)
+  @_hasInitialValue public static let translated: XCStringsCatalogCore::XCStringUnitState
+  @_hasInitialValue public static let needsReview: XCStringsCatalogCore::XCStringUnitState
+  public typealias RawValue = Swift::String
+}
+extension XCStringsCatalogCore::XCStringUnitState : Swift::ExpressibleByStringLiteral {
+  public init(stringLiteral value: Swift::StringLiteralType)
+  public typealias ExtendedGraphemeClusterLiteralType = Swift::StringLiteralType
+  public typealias StringLiteralType = Swift::StringLiteralType
+  public typealias UnicodeScalarLiteralType = Swift::StringLiteralType
+}
+public struct XCStringVariation : Swift::Codable, Swift::Hashable, Swift::Sendable {
+  public var stringUnit: XCStringsCatalogCore::XCStringUnit
+  public init(stringUnit: XCStringsCatalogCore::XCStringUnit)
+  @_implements(Swift::Equatable, ==(_:_:)) public static func __derived_struct_equals(_ a: XCStringsCatalogCore::XCStringVariation, _ b: XCStringsCatalogCore::XCStringVariation) -> Swift::Bool
+  public func encode(to encoder: any Swift::Encoder) throws
+  public func hash(into hasher: inout Swift::Hasher)
+  public var hashValue: Swift::Int {
+    get
+  }
+  public init(from decoder: any Swift::Decoder) throws
+}
+public struct XCStringVariations : Swift::Codable, Swift::Hashable, Swift::Sendable {
+  public let device: [XCStringsCatalogCore::XCStringVariations.XCStringsCatalogCore::DeviceKey : XCStringsCatalogCore::XCStringVariation]?
+  public let plural: [XCStringsCatalogCore::XCStringVariations.XCStringsCatalogCore::PluralKey : XCStringsCatalogCore::XCStringVariation]?
+  public init(device: [XCStringsCatalogCore::XCStringVariations.XCStringsCatalogCore::DeviceKey : XCStringsCatalogCore::XCStringVariation]?, plural: [XCStringsCatalogCore::XCStringVariations.XCStringsCatalogCore::PluralKey : XCStringsCatalogCore::XCStringVariation]?)
+  @_implements(Swift::Equatable, ==(_:_:)) public static func __derived_struct_equals(_ a: XCStringsCatalogCore::XCStringVariations, _ b: XCStringsCatalogCore::XCStringVariations) -> Swift::Bool
+  public func encode(to encoder: any Swift::Encoder) throws
+  public func hash(into hasher: inout Swift::Hasher)
+  public var hashValue: Swift::Int {
+    get
+  }
+  public init(from decoder: any Swift::Decoder) throws
+}
+extension XCStringsCatalogCore::XCStringVariations {
+  public struct DeviceKey : Swift::RawRepresentable, Swift::CodingKeyRepresentable, Swift::Codable, Swift::Hashable, Swift::Sendable, Swift::ExpressibleByStringLiteral {
+    public let rawValue: Swift::String
+    public init(rawValue: Swift::String)
+    public init(stringLiteral value: Swift::StringLiteralType)
+    @_hasInitialValue public static let iPhone: XCStringsCatalogCore::XCStringVariations.XCStringsCatalogCore::DeviceKey
+    @_hasInitialValue public static let iPod: XCStringsCatalogCore::XCStringVariations.XCStringsCatalogCore::DeviceKey
+    @_hasInitialValue public static let iPad: XCStringsCatalogCore::XCStringVariations.XCStringsCatalogCore::DeviceKey
+    @_hasInitialValue public static let appleWatch: XCStringsCatalogCore::XCStringVariations.XCStringsCatalogCore::DeviceKey
+    @_hasInitialValue public static let appleTV: XCStringsCatalogCore::XCStringVariations.XCStringsCatalogCore::DeviceKey
+    @_hasInitialValue public static let appleVision: XCStringsCatalogCore::XCStringVariations.XCStringsCatalogCore::DeviceKey
+    @_hasInitialValue public static let mac: XCStringsCatalogCore::XCStringVariations.XCStringsCatalogCore::DeviceKey
+    @_hasInitialValue public static let other: XCStringsCatalogCore::XCStringVariations.XCStringsCatalogCore::DeviceKey
+    public typealias ExtendedGraphemeClusterLiteralType = Swift::StringLiteralType
+    public typealias RawValue = Swift::String
+    public typealias StringLiteralType = Swift::StringLiteralType
+    public typealias UnicodeScalarLiteralType = Swift::StringLiteralType
+  }
+  public struct PluralKey : Swift::RawRepresentable, Swift::ExpressibleByStringLiteral, Swift::Codable, Swift::Hashable, Swift::Sendable, Swift::CodingKeyRepresentable {
+    public let rawValue: Swift::String
+    public init(rawValue: Swift::String)
+    public init(stringLiteral value: Swift::StringLiteralType)
+    @_hasInitialValue public static let zero: XCStringsCatalogCore::XCStringVariations.XCStringsCatalogCore::PluralKey
+    @_hasInitialValue public static let one: XCStringsCatalogCore::XCStringVariations.XCStringsCatalogCore::PluralKey
+    @_hasInitialValue public static let two: XCStringsCatalogCore::XCStringVariations.XCStringsCatalogCore::PluralKey
+    @_hasInitialValue public static let few: XCStringsCatalogCore::XCStringVariations.XCStringsCatalogCore::PluralKey
+    @_hasInitialValue public static let many: XCStringsCatalogCore::XCStringVariations.XCStringsCatalogCore::PluralKey
+    @_hasInitialValue public static let other: XCStringsCatalogCore::XCStringVariations.XCStringsCatalogCore::PluralKey
+    public typealias ExtendedGraphemeClusterLiteralType = Swift::StringLiteralType
+    public typealias RawValue = Swift::String
+    public typealias StringLiteralType = Swift::StringLiteralType
+    public typealias UnicodeScalarLiteralType = Swift::StringLiteralType
+  }
+}
+public struct XCStringsCatalog : Swift::Codable, Swift::Hashable, Swift::Sendable {
+  public var sourceLanguage: XCStringsCatalogCore::XCStringLanguage
+  public var strings: [Swift::String : XCStringsCatalogCore::XCStringEntry]
+  public var version: Swift::String
+  public init(sourceLanguage: XCStringsCatalogCore::XCStringLanguage, strings: [Swift::String : XCStringsCatalogCore::XCStringEntry], version: Swift::String)
+  @_implements(Swift::Equatable, ==(_:_:)) public static func __derived_struct_equals(_ a: XCStringsCatalogCore::XCStringsCatalog, _ b: XCStringsCatalogCore::XCStringsCatalog) -> Swift::Bool
+  public func encode(to encoder: any Swift::Encoder) throws
+  public func hash(into hasher: inout Swift::Hasher)
+  public var hashValue: Swift::Int {
+    get
+  }
+  public init(from decoder: any Swift::Decoder) throws
+}
+extension XCStringsCatalogCore::XCStringsCatalog {
+  public init(contentsOf fileURL: Foundation::URL) throws
+}
