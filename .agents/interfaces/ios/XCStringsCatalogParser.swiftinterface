@@ -1,0 +1,82 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 6.3.3 (swiftlang-6.3.3.1.3 clang-2100.1.1.101)
+// swift-module-flags: -target arm64-apple-ios16.0-simulator -enable-objc-interop -swift-version 6 -O -module-name XCStringsCatalogParser -package-name swift_xcstrings_catalog
+// swift-module-flags-ignorable:  -formal-cxx-interoperability-mode=off -interface-compiler-version 6.3.3
+import Dependencies
+import Foundation
+import RegexBuilder
+import Swift
+import XCStringsCatalogCore
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+@_exported import _XCStringResource
+@_exported import _XCStringsSource
+public enum ExtractionError : Swift.Sendable, Swift.Error {
+  public struct Context : Swift.Sendable {
+    public let key: Swift.String
+    public let debugDescription: Swift.String
+  }
+  case localizationCorrupt(XCStringsCatalogParser.ExtractionError.Context)
+  case unsupported(XCStringsCatalogParser.ExtractionError.Context)
+}
+extension XCStringsCatalogParser.ExtractionError : Foundation.LocalizedError {
+  public var errorDescription: Swift.String? {
+    get
+  }
+}
+public struct ExtractionIssue : Swift.Equatable, Swift.Sendable {
+  public enum Reason : Swift.Equatable, Swift.Sendable {
+    case wrongExtractionState(XCStringsCatalogCore.XCStringExtractionState?)
+    case missingSourceLocalization(XCStringsCatalogCore.XCStringLanguage)
+    @_semantics("derived_enum_equals") @_implements(Swift.Equatable, ==(_:_:)) public static func __derived_enum_equals(_ a: XCStringsCatalogParser.ExtractionIssue.Reason, _ b: XCStringsCatalogParser.ExtractionIssue.Reason) -> Swift.Bool
+  }
+  public let key: Swift.String
+  public let reason: XCStringsCatalogParser.ExtractionIssue.Reason
+  public var description: Swift.String {
+    get
+  }
+  @_implements(Swift.Equatable, ==(_:_:)) public static func __derived_struct_equals(_ a: XCStringsCatalogParser.ExtractionIssue, _ b: XCStringsCatalogParser.ExtractionIssue) -> Swift.Bool
+}
+extension XCStringsCatalogParser.DefaultXCStringsCatalogParser {
+  @usableFromInline
+  internal func extractResources(from legacyFormat: _XCStringsSource.XCStringsSource.LegacyFormat) throws -> XCStringsCatalogParser.DefaultXCStringsCatalogParser.Output
+}
+extension XCStringsCatalogParser.DefaultXCStringsCatalogParser {
+  @usableFromInline
+  internal func collect(collector: (inout [_XCStringResource.XCStringResource], inout [XCStringsCatalogParser.ExtractionIssue]) throws -> Swift.Void) rethrows -> XCStringsCatalogParser.DefaultXCStringsCatalogParser.Output
+}
+extension XCStringsCatalogParser.DefaultXCStringsCatalogParser {
+  @usableFromInline
+  internal func extractResources(from catalog: XCStringsCatalogCore.XCStringsCatalog) throws -> XCStringsCatalogParser.DefaultXCStringsCatalogParser.Output
+}
+public struct XCStringsCatalogParserOutput : Swift.Equatable, Swift.Sendable {
+  public let resources: [_XCStringResource.XCStringResource]
+  public let issues: [XCStringsCatalogParser.ExtractionIssue]
+  public init(resources: [_XCStringResource.XCStringResource], issues: [XCStringsCatalogParser.ExtractionIssue])
+  @_implements(Swift.Equatable, ==(_:_:)) public static func __derived_struct_equals(_ a: XCStringsCatalogParser.XCStringsCatalogParserOutput, _ b: XCStringsCatalogParser.XCStringsCatalogParserOutput) -> Swift.Bool
+}
+public protocol XCStringsCatalogParser : Swift.Sendable {
+  func parse(from source: _XCStringsSource.XCStringsSource) throws -> XCStringsCatalogParser.XCStringsCatalogParserOutput
+}
+extension Dependencies.DependencyValues {
+  public var xcStringsCatalogParser: any XCStringsCatalogParser.XCStringsCatalogParser {
+    get
+    set
+  }
+}
+public struct DefaultXCStringsCatalogParser : XCStringsCatalogParser.XCStringsCatalogParser {
+  public typealias Output = XCStringsCatalogParser.XCStringsCatalogParserOutput
+  public init()
+  @inlinable public func parse(from source: _XCStringsSource.XCStringsSource) throws -> XCStringsCatalogParser.XCStringsCatalogParserOutput {
+		switch source {
+		case let .catalog(stringCatalog):
+			try extractResources(from: stringCatalog)
+		case let .legacy(legacyFormat):
+			try extractResources(from: legacyFormat)
+		}
+	}
+}
+extension XCStringsCatalogCore.XCStringsCatalog {
+  public func parse() throws -> XCStringsCatalogParser.XCStringsCatalogParserOutput
+}
