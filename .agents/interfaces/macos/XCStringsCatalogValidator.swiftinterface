@@ -1,7 +1,7 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 6.4 (swiftlang-6.4.0.25.4 clang-2100.3.25.1)
-// swift-module-flags: -target arm64-apple-macos13.0 -enable-objc-interop -language-mode 6 -O -enable-experimental-feature DebugDescriptionMacro -module-name XCStringsCatalogValidator -package-name swift_xcstrings_catalog
-// swift-module-flags-ignorable:  -formal-cxx-interoperability-mode=off -interface-compiler-version 6.4
+// swift-compiler-version: Apple Swift version 6.3.3 (swiftlang-6.3.3.1.3 clang-2100.1.1.101)
+// swift-module-flags: -target arm64-apple-macosx13.0 -enable-objc-interop -swift-version 6 -O -module-name XCStringsCatalogValidator -package-name swift_xcstrings_catalog
+// swift-module-flags-ignorable:  -formal-cxx-interoperability-mode=off -interface-compiler-version 6.3.3
 import Dependencies
 import Foundation
 import Swift
@@ -9,102 +9,102 @@ import _Concurrency
 import _StringProcessing
 import _SwiftConcurrencyShims
 @_exported import _XCStringResource
-extension Dependencies::DependencyValues {
-  public var defaultXCStringResourceValidator: any XCStringsCatalogValidator::XCStringResourceValidator {
+extension Dependencies.DependencyValues {
+  public var defaultXCStringResourceValidator: any XCStringsCatalogValidator.XCStringResourceValidator {
     get
     set
   }
 }
-extension Dependencies::DependencyValues {
-  public var defaultXCStringResourcesValidator: any XCStringsCatalogValidator::XCStringResourcesValidator {
+extension Dependencies.DependencyValues {
+  public var defaultXCStringResourcesValidator: any XCStringsCatalogValidator.XCStringResourcesValidator {
     get
     set
   }
 }
-public struct DefaultXCStringResourcesValidator : XCStringsCatalogValidator::XCStringResourcesValidator {
-  @_hasInitialValue private var _defaultXCStringResourceValidator: Dependencies::Dependency<any XCStringsCatalogValidator::XCStringResourceValidator>
+public struct DefaultXCStringResourcesValidator : XCStringsCatalogValidator.XCStringResourcesValidator {
+  @_hasInitialValue private var _defaultXCStringResourceValidator: Dependencies.Dependency<any XCStringsCatalogValidator.XCStringResourceValidator>
   public init()
-  public func validateResources(_ resources: [_XCStringResource::XCStringResource]) -> [XCStringsCatalogValidator::XCStringResourceIssue]
+  public func validateResources(_ resources: [_XCStringResource.XCStringResource]) -> [XCStringsCatalogValidator.XCStringResourceIssue]
 }
-public struct XCStringResourceIssue : Swift::Equatable, Swift::Sendable {
-  public let resources: [_XCStringResource::XCStringResource]
-  public let description: Swift::String
-  public init(resources: [_XCStringResource::XCStringResource], description: Swift::String)
-  @_implements(Swift::Equatable, ==(_:_:)) public static func __derived_struct_equals(_ a: XCStringsCatalogValidator::XCStringResourceIssue, _ b: XCStringsCatalogValidator::XCStringResourceIssue) -> Swift::Bool
+public struct XCStringResourceIssue : Swift.Equatable, Swift.Sendable {
+  public let resources: [_XCStringResource.XCStringResource]
+  public let description: Swift.String
+  public init(resources: [_XCStringResource.XCStringResource], description: Swift.String)
+  @_implements(Swift.Equatable, ==(_:_:)) public static func __derived_struct_equals(_ a: XCStringsCatalogValidator.XCStringResourceIssue, _ b: XCStringsCatalogValidator.XCStringResourceIssue) -> Swift.Bool
 }
-public protocol XCStringResourceValidator : Swift::Sendable {
-  func validateResource(_ resource: _XCStringResource::XCStringResource) -> [XCStringsCatalogValidator::XCStringResourceIssue]
+public protocol XCStringResourceValidator : Swift.Sendable {
+  func validateResource(_ resource: _XCStringResource.XCStringResource) -> [XCStringsCatalogValidator.XCStringResourceIssue]
 }
 public enum XCStringResourceValidators {
 }
-extension XCStringsCatalogValidator::XCStringResourceValidators {
-  public struct AnyValidator : XCStringsCatalogValidator::XCStringResourceValidator {
+extension XCStringsCatalogValidator.XCStringResourceValidators {
+  public struct AnyValidator : XCStringsCatalogValidator.XCStringResourceValidator {
     @usableFromInline
-    internal let underlying: any XCStringsCatalogValidator::XCStringResourceValidator
-    public init(_ underlying: any XCStringsCatalogValidator::XCStringResourceValidator)
-    @inlinable public init(_ validate: @escaping @Sendable (_XCStringResource::XCStringResource) -> [XCStringsCatalogValidator::XCStringResourceIssue]) {
+    internal let underlying: any XCStringsCatalogValidator.XCStringResourceValidator
+    public init(_ underlying: any XCStringsCatalogValidator.XCStringResourceValidator)
+    @inlinable public init(_ validate: @escaping @Sendable (_XCStringResource.XCStringResource) -> [XCStringsCatalogValidator.XCStringResourceIssue]) {
 			self.init(.inline(validate))
 		}
-    @inlinable public func validateResource(_ resource: _XCStringResource::XCStringResource) -> [XCStringsCatalogValidator::XCStringResourceIssue] {
+    @inlinable public func validateResource(_ resource: _XCStringResource.XCStringResource) -> [XCStringsCatalogValidator.XCStringResourceIssue] {
 			underlying.validateResource(resource)
 		}
   }
 }
-extension XCStringsCatalogValidator::XCStringResourceValidators {
-  public struct Empty : XCStringsCatalogValidator::XCStringResourceValidator {
-    public func validateResource(_ resource: _XCStringResource::XCStringResource) -> [XCStringsCatalogValidator::XCStringResourceIssue]
+extension XCStringsCatalogValidator.XCStringResourceValidators {
+  public struct Empty : XCStringsCatalogValidator.XCStringResourceValidator {
+    public func validateResource(_ resource: _XCStringResource.XCStringResource) -> [XCStringsCatalogValidator.XCStringResourceIssue]
   }
 }
-extension XCStringsCatalogValidator::XCStringResourceValidator where Self == XCStringsCatalogValidator::XCStringResourceValidators.XCStringsCatalogValidator::Empty {
-  public static var empty: XCStringsCatalogValidator::XCStringResourceValidators.XCStringsCatalogValidator::Empty {
+extension XCStringsCatalogValidator.XCStringResourceValidator where Self == XCStringsCatalogValidator.XCStringResourceValidators.Empty {
+  public static var empty: XCStringsCatalogValidator.XCStringResourceValidators.Empty {
     get
   }
 }
-extension XCStringsCatalogValidator::XCStringResourceValidators {
-  public struct Inline : XCStringsCatalogValidator::XCStringResourceValidator {
+extension XCStringsCatalogValidator.XCStringResourceValidators {
+  public struct Inline : XCStringsCatalogValidator.XCStringResourceValidator {
     @usableFromInline
-    internal let validate: @Sendable (_XCStringResource::XCStringResource) -> [XCStringsCatalogValidator::XCStringResourceIssue]
-    public init(_ validate: @escaping @Sendable (_XCStringResource::XCStringResource) -> [XCStringsCatalogValidator::XCStringResourceIssue])
-    @inlinable public func validateResource(_ resource: _XCStringResource::XCStringResource) -> [XCStringsCatalogValidator::XCStringResourceIssue] {
+    internal let validate: @Sendable (_XCStringResource.XCStringResource) -> [XCStringsCatalogValidator.XCStringResourceIssue]
+    public init(_ validate: @escaping @Sendable (_XCStringResource.XCStringResource) -> [XCStringsCatalogValidator.XCStringResourceIssue])
+    @inlinable public func validateResource(_ resource: _XCStringResource.XCStringResource) -> [XCStringsCatalogValidator.XCStringResourceIssue] {
 			validate(resource)
 		}
   }
 }
-extension XCStringsCatalogValidator::XCStringResourceValidator where Self == XCStringsCatalogValidator::XCStringResourceValidators.XCStringsCatalogValidator::Inline {
-  @inlinable public static func inline(_ validate: @escaping @Sendable (_XCStringResource::XCStringResource) -> [XCStringsCatalogValidator::XCStringResourceIssue]) -> Self {
+extension XCStringsCatalogValidator.XCStringResourceValidator where Self == XCStringsCatalogValidator.XCStringResourceValidators.Inline {
+  @inlinable public static func inline(_ validate: @escaping @Sendable (_XCStringResource.XCStringResource) -> [XCStringsCatalogValidator.XCStringResourceIssue]) -> Self {
 		return .init(validate)
 	}
 }
-extension XCStringsCatalogValidator::XCStringResourceValidators {
-  public struct Concat : XCStringsCatalogValidator::XCStringResourceValidator {
+extension XCStringsCatalogValidator.XCStringResourceValidators {
+  public struct Concat : XCStringsCatalogValidator.XCStringResourceValidator {
     @usableFromInline
-    internal let validators: [any XCStringsCatalogValidator::XCStringResourceValidator]
-    public init(_ validators: [any XCStringsCatalogValidator::XCStringResourceValidator])
-    @inlinable public func validateResource(_ resource: _XCStringResource::XCStringResource) -> [XCStringsCatalogValidator::XCStringResourceIssue] {
+    internal let validators: [any XCStringsCatalogValidator.XCStringResourceValidator]
+    public init(_ validators: [any XCStringsCatalogValidator.XCStringResourceValidator])
+    @inlinable public func validateResource(_ resource: _XCStringResource.XCStringResource) -> [XCStringsCatalogValidator.XCStringResourceIssue] {
 			validators.flatMap { $0.validateResource(resource) }
 		}
   }
 }
-extension XCStringsCatalogValidator::XCStringResourceValidator where Self == XCStringsCatalogValidator::XCStringResourceValidators.XCStringsCatalogValidator::Concat {
-  @inlinable public static func concatenate(_ validators: any XCStringsCatalogValidator::XCStringResourceValidator...) -> Self {
+extension XCStringsCatalogValidator.XCStringResourceValidator where Self == XCStringsCatalogValidator.XCStringResourceValidators.Concat {
+  @inlinable public static func concatenate(_ validators: any XCStringsCatalogValidator.XCStringResourceValidator...) -> Self {
 		return .init(validators)
 	}
-  @inlinable public static func concatenate(_ validators: [any XCStringsCatalogValidator::XCStringResourceValidator]) -> Self {
+  @inlinable public static func concatenate(_ validators: [any XCStringsCatalogValidator.XCStringResourceValidator]) -> Self {
 		return .init(validators)
 	}
 }
-extension XCStringsCatalogValidator::XCStringResourceValidator {
-  @inlinable public func appending(_ validators: any XCStringsCatalogValidator::XCStringResourceValidator...) -> some XCStringsCatalogValidator::XCStringResourceValidator {
+extension XCStringsCatalogValidator.XCStringResourceValidator {
+  @inlinable public func appending(_ validators: any XCStringsCatalogValidator.XCStringResourceValidator...) -> some XCStringsCatalogValidator.XCStringResourceValidator {
 		return .concatenate([self] + validators)
 	}
   
 }
-extension XCStringsCatalogValidator::XCStringResourcesValidators {
-  public struct ConflictingIdentifiers : XCStringsCatalogValidator::XCStringResourcesValidator {
+extension XCStringsCatalogValidator.XCStringResourcesValidators {
+  public struct ConflictingIdentifiers : XCStringsCatalogValidator.XCStringResourcesValidator {
     @usableFromInline
-    internal let identifier: @Sendable (_XCStringResource::XCStringResource) -> Swift::String
-    public init(_ identifier: @escaping @Sendable (_XCStringResource::XCStringResource) -> Swift::String)
-    @inlinable public func validateResources(_ resources: [_XCStringResource::XCStringResource]) -> [XCStringsCatalogValidator::XCStringResourceIssue] {
+    internal let identifier: @Sendable (_XCStringResource.XCStringResource) -> Swift.String
+    public init(_ identifier: @escaping @Sendable (_XCStringResource.XCStringResource) -> Swift.String)
+    @inlinable public func validateResources(_ resources: [_XCStringResource.XCStringResource]) -> [XCStringsCatalogValidator.XCStringResourceIssue] {
 			Dictionary(grouping: resources, by: identifier)
 				.filter { $0.value.count > 1 }
 				.mapValues { resources in
@@ -124,15 +124,15 @@ extension XCStringsCatalogValidator::XCStringResourcesValidators {
 		}
   }
 }
-extension XCStringsCatalogValidator::XCStringResourcesValidator where Self == XCStringsCatalogValidator::XCStringResourcesValidators.XCStringsCatalogValidator::ConflictingIdentifiers {
-  public static func conflictingIdentifiers(by identifier: @escaping @Sendable (_XCStringResource::XCStringResource) -> Swift::String) -> Self
+extension XCStringsCatalogValidator.XCStringResourcesValidator where Self == XCStringsCatalogValidator.XCStringResourcesValidators.ConflictingIdentifiers {
+  public static func conflictingIdentifiers(by identifier: @escaping @Sendable (_XCStringResource.XCStringResource) -> Swift.String) -> Self
 }
-extension XCStringsCatalogValidator::XCStringResourcesValidators {
-  public struct UnsupportedIdentifiers : XCStringsCatalogValidator::XCStringResourcesValidator {
+extension XCStringsCatalogValidator.XCStringResourcesValidators {
+  public struct UnsupportedIdentifiers : XCStringsCatalogValidator.XCStringResourcesValidator {
     @usableFromInline
-    internal let identifier: @Sendable (_XCStringResource::XCStringResource) -> Swift::String
-    public init(_ identifier: @escaping @Sendable (_XCStringResource::XCStringResource) -> Swift::String)
-    @inlinable public func validateResources(_ resources: [_XCStringResource::XCStringResource]) -> [XCStringsCatalogValidator::XCStringResourceIssue] {
+    internal let identifier: @Sendable (_XCStringResource.XCStringResource) -> Swift.String
+    public init(_ identifier: @escaping @Sendable (_XCStringResource.XCStringResource) -> Swift.String)
+    @inlinable public func validateResources(_ resources: [_XCStringResource.XCStringResource]) -> [XCStringsCatalogValidator.XCStringResourceIssue] {
 			resources
 				.filter { identifier($0).trimmingCharacters(in: .whitespacesAndNewlines).isEmpty }
 				.map { resource in
@@ -144,75 +144,75 @@ extension XCStringsCatalogValidator::XCStringResourcesValidators {
 		}
   }
 }
-extension XCStringsCatalogValidator::XCStringResourcesValidator where Self == XCStringsCatalogValidator::XCStringResourcesValidators.XCStringsCatalogValidator::UnsupportedIdentifiers {
-  public static func unsupportedIdentifiers(by identifier: @escaping @Sendable (_XCStringResource::XCStringResource) -> Swift::String) -> Self
+extension XCStringsCatalogValidator.XCStringResourcesValidator where Self == XCStringsCatalogValidator.XCStringResourcesValidators.UnsupportedIdentifiers {
+  public static func unsupportedIdentifiers(by identifier: @escaping @Sendable (_XCStringResource.XCStringResource) -> Swift.String) -> Self
 }
-extension XCStringsCatalogValidator::XCStringResourcesValidator where Self == XCStringsCatalogValidator::XCStringResourcesValidators.XCStringsCatalogValidator::Concat {
-  public static func defaultIdentifiersValidator(for identifier: @escaping @Sendable (_XCStringResource::XCStringResource) -> Swift::String) -> Self
+extension XCStringsCatalogValidator.XCStringResourcesValidator where Self == XCStringsCatalogValidator.XCStringResourcesValidators.Concat {
+  public static func defaultIdentifiersValidator(for identifier: @escaping @Sendable (_XCStringResource.XCStringResource) -> Swift.String) -> Self
 }
-public protocol XCStringResourcesValidator : Swift::Sendable {
-  func validateResources(_ resources: [_XCStringResource::XCStringResource]) -> [XCStringsCatalogValidator::XCStringResourceIssue]
+public protocol XCStringResourcesValidator : Swift.Sendable {
+  func validateResources(_ resources: [_XCStringResource.XCStringResource]) -> [XCStringsCatalogValidator.XCStringResourceIssue]
 }
 public enum XCStringResourcesValidators {
 }
-extension XCStringsCatalogValidator::XCStringResourcesValidators {
-  public struct AnyValidator : XCStringsCatalogValidator::XCStringResourcesValidator {
+extension XCStringsCatalogValidator.XCStringResourcesValidators {
+  public struct AnyValidator : XCStringsCatalogValidator.XCStringResourcesValidator {
     @usableFromInline
-    internal let underlying: any XCStringsCatalogValidator::XCStringResourcesValidator
-    public init(_ underlying: any XCStringsCatalogValidator::XCStringResourcesValidator)
-    @inlinable public init(_ validate: @escaping @Sendable ([_XCStringResource::XCStringResource]) -> [XCStringsCatalogValidator::XCStringResourceIssue]) {
+    internal let underlying: any XCStringsCatalogValidator.XCStringResourcesValidator
+    public init(_ underlying: any XCStringsCatalogValidator.XCStringResourcesValidator)
+    @inlinable public init(_ validate: @escaping @Sendable ([_XCStringResource.XCStringResource]) -> [XCStringsCatalogValidator.XCStringResourceIssue]) {
 			self.init(.inline(validate))
 		}
-    @inlinable public func validateResources(_ resources: [_XCStringResource::XCStringResource]) -> [XCStringsCatalogValidator::XCStringResourceIssue] {
+    @inlinable public func validateResources(_ resources: [_XCStringResource.XCStringResource]) -> [XCStringsCatalogValidator.XCStringResourceIssue] {
 			underlying.validateResources(resources)
 		}
   }
 }
-extension XCStringsCatalogValidator::XCStringResourcesValidators {
-  public struct Empty : XCStringsCatalogValidator::XCStringResourcesValidator {
-    public func validateResources(_ resources: [_XCStringResource::XCStringResource]) -> [XCStringsCatalogValidator::XCStringResourceIssue]
+extension XCStringsCatalogValidator.XCStringResourcesValidators {
+  public struct Empty : XCStringsCatalogValidator.XCStringResourcesValidator {
+    public func validateResources(_ resources: [_XCStringResource.XCStringResource]) -> [XCStringsCatalogValidator.XCStringResourceIssue]
   }
 }
-extension XCStringsCatalogValidator::XCStringResourcesValidator where Self == XCStringsCatalogValidator::XCStringResourcesValidators.XCStringsCatalogValidator::Empty {
-  public static var empty: XCStringsCatalogValidator::XCStringResourcesValidators.XCStringsCatalogValidator::Empty {
+extension XCStringsCatalogValidator.XCStringResourcesValidator where Self == XCStringsCatalogValidator.XCStringResourcesValidators.Empty {
+  public static var empty: XCStringsCatalogValidator.XCStringResourcesValidators.Empty {
     get
   }
 }
-extension XCStringsCatalogValidator::XCStringResourcesValidators {
-  public struct Inline : XCStringsCatalogValidator::XCStringResourcesValidator {
+extension XCStringsCatalogValidator.XCStringResourcesValidators {
+  public struct Inline : XCStringsCatalogValidator.XCStringResourcesValidator {
     @usableFromInline
-    internal let validate: @Sendable ([_XCStringResource::XCStringResource]) -> [XCStringsCatalogValidator::XCStringResourceIssue]
-    public init(_ validate: @escaping @Sendable ([_XCStringResource::XCStringResource]) -> [XCStringsCatalogValidator::XCStringResourceIssue])
-    @inlinable public func validateResources(_ resources: [_XCStringResource::XCStringResource]) -> [XCStringsCatalogValidator::XCStringResourceIssue] {
+    internal let validate: @Sendable ([_XCStringResource.XCStringResource]) -> [XCStringsCatalogValidator.XCStringResourceIssue]
+    public init(_ validate: @escaping @Sendable ([_XCStringResource.XCStringResource]) -> [XCStringsCatalogValidator.XCStringResourceIssue])
+    @inlinable public func validateResources(_ resources: [_XCStringResource.XCStringResource]) -> [XCStringsCatalogValidator.XCStringResourceIssue] {
 			validate(resources)
 		}
   }
 }
-extension XCStringsCatalogValidator::XCStringResourcesValidator where Self == XCStringsCatalogValidator::XCStringResourcesValidators.XCStringsCatalogValidator::Inline {
-  @inlinable public static func inline(_ validate: @escaping @Sendable ([_XCStringResource::XCStringResource]) -> [XCStringsCatalogValidator::XCStringResourceIssue]) -> Self {
+extension XCStringsCatalogValidator.XCStringResourcesValidator where Self == XCStringsCatalogValidator.XCStringResourcesValidators.Inline {
+  @inlinable public static func inline(_ validate: @escaping @Sendable ([_XCStringResource.XCStringResource]) -> [XCStringsCatalogValidator.XCStringResourceIssue]) -> Self {
 		return .init(validate)
 	}
 }
-extension XCStringsCatalogValidator::XCStringResourcesValidators {
-  public struct Concat : XCStringsCatalogValidator::XCStringResourcesValidator {
+extension XCStringsCatalogValidator.XCStringResourcesValidators {
+  public struct Concat : XCStringsCatalogValidator.XCStringResourcesValidator {
     @usableFromInline
-    internal let validators: [any XCStringsCatalogValidator::XCStringResourcesValidator]
-    public init(_ validators: [any XCStringsCatalogValidator::XCStringResourcesValidator])
-    @inlinable public func validateResources(_ resources: [_XCStringResource::XCStringResource]) -> [XCStringsCatalogValidator::XCStringResourceIssue] {
+    internal let validators: [any XCStringsCatalogValidator.XCStringResourcesValidator]
+    public init(_ validators: [any XCStringsCatalogValidator.XCStringResourcesValidator])
+    @inlinable public func validateResources(_ resources: [_XCStringResource.XCStringResource]) -> [XCStringsCatalogValidator.XCStringResourceIssue] {
 			validators.flatMap { $0.validateResources(resources) }
 		}
   }
 }
-extension XCStringsCatalogValidator::XCStringResourcesValidator where Self == XCStringsCatalogValidator::XCStringResourcesValidators.XCStringsCatalogValidator::Concat {
-  @inlinable public static func concatenate(_ validators: any XCStringsCatalogValidator::XCStringResourcesValidator...) -> Self {
+extension XCStringsCatalogValidator.XCStringResourcesValidator where Self == XCStringsCatalogValidator.XCStringResourcesValidators.Concat {
+  @inlinable public static func concatenate(_ validators: any XCStringsCatalogValidator.XCStringResourcesValidator...) -> Self {
 		return .init(validators)
 	}
-  @inlinable public static func concatenate(_ validators: [any XCStringsCatalogValidator::XCStringResourcesValidator]) -> Self {
+  @inlinable public static func concatenate(_ validators: [any XCStringsCatalogValidator.XCStringResourcesValidator]) -> Self {
 		return .init(validators)
 	}
 }
-extension XCStringsCatalogValidator::XCStringResourcesValidator {
-  @inlinable public func appending(_ validators: any XCStringsCatalogValidator::XCStringResourcesValidator...) -> some XCStringsCatalogValidator::XCStringResourcesValidator {
+extension XCStringsCatalogValidator.XCStringResourcesValidator {
+  @inlinable public func appending(_ validators: any XCStringsCatalogValidator.XCStringResourcesValidator...) -> some XCStringsCatalogValidator.XCStringResourcesValidator {
 		return .concatenate([self] + validators)
 	}
   
